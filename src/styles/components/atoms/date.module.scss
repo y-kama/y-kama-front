@@ -1,0 +1,29 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$date-style: (
+  backgroundColor: #327232,
+  fontSize: 4rem,
+  lineHeight: 2,
+  textAlign: center,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.date {
+  background-color: hasKey($date-style, "backgroundColor");
+  font-size: hasKey($date-style, "fontSize");
+  line-height: hasKey($date-style, "lineHeight");
+  text-align: hasKey($date-style, "textAlign");
+}

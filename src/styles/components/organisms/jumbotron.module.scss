@@ -1,0 +1,94 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$jumbotron-style: (
+  backgroundImage: url(../../../images/background.jpg),
+  backgroundPosition: center,
+  backgroundRepeat: no-repeat,
+  backgroundSize: cover,
+  minWidth: 320px,
+);
+$jumbotron__inner-style: (
+  display: grid,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: repeat(7, 64px),
+  marginLeft: auto,
+  marginRight: auto,
+  width: 320px,
+);
+$jumbotron__inner__p-style: (
+  gridColumnEnd: 11,
+  gridColumnStart: 1,
+  gridRowEnd: 6,
+  gridRowStart: 3,
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-jumbotron__inner-style: (
+  gridTemplateColumns: repeat(36, 32px),
+  gridTemplateRows: repeat(12, 64px),
+  width: 1152px,
+);
+$pc-jumbotron__inner__p-style: (
+  gridColumnEnd: 37,
+  gridColumnStart: 1,
+  gridRowEnd: 8,
+  gridRowStart: 6,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.jumbotron {
+  background-image: hasKey($jumbotron-style, "backgroundImage");
+  background-position: hasKey($jumbotron-style, "backgroundPosition");
+  background-repeat: hasKey($jumbotron-style, "backgroundRepeat");
+  background-size: hasKey($jumbotron-style, "backgroundSize");
+  min-width: hasKey($jumbotron-style, "minWidth");
+
+  &__inner {
+    display: hasKey($jumbotron__inner-style, "display");
+    grid-template-columns: hasKey($jumbotron__inner-style, "gridTemplateColumns");
+    grid-template-rows: hasKey($jumbotron__inner-style, "gridTemplateRows");
+    margin-left: hasKey($jumbotron__inner-style, "marginLeft");
+    margin-right: hasKey($jumbotron__inner-style, "marginRight");
+    width: hasKey($jumbotron__inner-style, "width");
+
+    & > p {
+      grid-column-end: hasKey($jumbotron__inner__p-style, "gridColumnEnd");
+      grid-column-start: hasKey($jumbotron__inner__p-style, "gridColumnStart");
+      grid-row-end: hasKey($jumbotron__inner__p-style, "gridRowEnd");
+      grid-row-start: hasKey($jumbotron__inner__p-style, "gridRowStart");
+    }
+  }
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .jumbotron {
+    &__inner {
+      grid-template-columns: hasKey($pc-jumbotron__inner-style, "gridTemplateColumns");
+      grid-template-rows: hasKey($pc-jumbotron__inner-style, "gridTemplateRows");
+      width: hasKey($pc-jumbotron__inner-style, "width");
+
+      & > p {
+        grid-column-end: hasKey($pc-jumbotron__inner__p-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-jumbotron__inner__p-style, "gridColumnStart");
+        grid-row-end: hasKey($pc-jumbotron__inner__p-style, "gridRowEnd");
+        grid-row-start: hasKey($pc-jumbotron__inner__p-style, "gridRowStart");
+      }
+    }
+  }
+}

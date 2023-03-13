@@ -1,0 +1,96 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$litem-style: (
+  fontSize: 4rem,
+  lineHeight: 2,
+  position: relative,
+  textAlign: center,
+  zIndex: 0,  
+);
+$litem__a-style: (
+  display: block,
+);
+
+// Uline Style
+$uline-style: (
+  backgroundColor: #328032,
+  bottom: 12px,
+  content: "",
+  display: block,
+  height: 2px,
+  left: 128px,
+  position: absolute,
+  right: 128px,
+  transition: 1s,
+  zIndex: -1,
+);
+$uline-hover-style: (
+  left: 64px,
+  right: 64px,
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-uline-style: (
+  left: 128px,
+  right: 128px,
+);
+$pc-uline-hover-style: (
+  left: 40px,
+  right: 40px,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.litem {
+  font-size: hasKey($litem-style, "fontSize");
+  line-height: hasKey($litem-style, "lineHeight");
+  position: hasKey($litem-style, "position");
+  text-align: hasKey($litem-style, "textAlign");
+  z-index: hasKey($litem-style, "zIndex");
+
+  & > a {
+    display: hasKey($litem__a-style, "display");
+  }
+
+  &::after {
+    background-color: hasKey($uline-style, "backgroundColor");
+    bottom: hasKey($uline-style, "bottom");
+    content: hasKey($uline-style, "content");
+    display: hasKey($uline-style, "display");
+    height: hasKey($uline-style, "height");
+    left: hasKey($uline-style, "left");
+    position: hasKey($uline-style, "position");
+    right: hasKey($uline-style, "right");
+    transition: hasKey($uline-style, "transition");
+    z-index: hasKey($uline-style, "zIndex");
+  }
+
+  &:hover::after {
+    left: hasKey($uline-hover-style, "left");
+    right: hasKey($uline-hover-style, "right");
+  }
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .litem {
+    &:hover::after {
+      left: hasKey($pc-uline-hover-style, "left");
+      right: hasKey($pc-uline-hover-style, "right");
+    }
+  }
+}

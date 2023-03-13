@@ -1,0 +1,118 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$button-style: (
+  fontSize: 2rem,
+  lineHeight: 2,
+  position: relative,
+  textAlign: center,
+  zIndex: 9999,
+);
+$button_on-style: (
+  color: #163216,
+);
+
+// Oline Style
+$oline-style: (
+  backGroundColor: #F4F5F7,
+  content: "",
+  display: block,
+  height: 4px,
+  left: 10px,
+  position: absolute,
+  right: 10px,
+  top: 10px,
+  width: 44px,
+  zIndex: 1,
+);
+$oline_on-style: (
+  transform: translateY(20px) rotate(45deg),
+);
+
+// Uline Style
+$uline-style: (
+  backGroundColor: #F4F5F7,
+  bottom: 10px,
+  content: "",
+  display: block,
+  height: 4px,
+  left: 10px,
+  position: absolute,
+  right: 10px,
+  width: 44px,
+  zIndex: 1,
+);
+$uline_on-style: (
+  transform: translateY(-20px) rotate(-45deg),
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-button-style: (
+  visibility: hidden,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.button {
+  font-size: hasKey($button-style, "fontSize");
+  line-height: hasKey($button-style, "lineHeight");
+  position: hasKey($button-style, "position");
+  text-align: hasKey($button-style, "textAlign");
+  z-index: hasKey($button-style, "zIndex");
+
+  &::before {
+    background-color: hasKey($oline-style, "backGroundColor");
+    content: hasKey($oline-style, "content");
+    display: hasKey($oline-style, "display");
+    height: hasKey($oline-style, "height");
+    left: hasKey($oline-style, "left");
+    position: hasKey($oline-style, "position");
+    top: hasKey($oline-style, "top");
+    width: hasKey($oline-style, "width");
+    z-index: hasKey($oline-style, "zIndex");
+  }
+
+  &::after {
+    background-color: hasKey($uline-style, "backGroundColor");
+    bottom: hasKey($uline-style, "bottom");
+    content: hasKey($uline-style, "content");
+    display: hasKey($uline-style, "display");
+    height: hasKey($uline-style, "height");
+    position: hasKey($uline-style, "position");
+    right: hasKey($uline-style, "right");
+    width: hasKey($uline-style, "width");
+    z-index: hasKey($uline-style, "zIndex");
+  }
+}
+
+.button_on {
+  color: hasKey($button_on-style, "color");
+
+  &::before {
+    transform: hasKey($oline_on-style, "transform");
+  }
+
+  &::after {
+    transform: hasKey($uline_on-style, "transform");
+  }
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .button {
+    visibility: hasKey($pc-button-style, "visibility");
+  }
+}

@@ -1,0 +1,46 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$nav_open-style: (
+  backgroundColor: rgba(22, 50, 22, 0.8),
+  display: block,
+  height: 100vh,
+  left: 0,
+  paddingBottom: 64px,
+  paddingTop: 64px,
+  position: fixed,
+  right: 0,
+  zIndex: 8888,
+);
+$nav_close-style: (
+  display: none,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.nav_open {
+  background-color: hasKey($nav_open-style, "backgroundColor");
+  display: hasKey($nav_open-style, "display");
+  height: hasKey($nav_open-style, "height");
+  left: hasKey($nav_open-style, "left");
+  padding-bottom: hasKey($nav_open-style, "paddingBottom");
+  padding-top: hasKey($nav_open-style, "paddingTop");
+  position: hasKey($nav_open-style, "position");
+  right: hasKey($nav_open-style, "right");
+  z-index: hasKey($nav_open-style, "zIndex");
+}
+
+.nav_close {
+  display: hasKey($nav_close-style, "display");
+}

@@ -1,0 +1,35 @@
+// *========*========*========*========*========*
+// Global Style
+// *========*========*========*========*========*
+
+// Base Style
+$html-style: (
+  fontSize: 8px,
+);
+$body-style: (
+  backgroundColor: #327232,
+  color: #F4F5F7,
+  fontFamily: ("Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif),
+  fontSize: 2rem,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+html {
+  font-size: hasKey($html-style, "fontSize");
+}
+
+body {
+  background-color: hasKey($body-style, "backgroundColor");
+  color: hasKey($body-style, "color");
+  font-family: hasKey($body-style, "fontFamily");
+  font-size: hasKey($body-style, "fontSize");
+}

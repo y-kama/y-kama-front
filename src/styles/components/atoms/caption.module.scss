@@ -1,0 +1,27 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$caption-style: (
+  fontSize: 4rem,
+  lineHeight: 2,
+  textAlign: center,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.caption {
+  font-size: hasKey($caption-style, "fontSize");
+  line-height: hasKey($caption-style, "lineHeight");
+  text-align: hasKey($caption-style, "textAlign");
+}

@@ -1,0 +1,431 @@
+// *========*========*========*========*========*
+// Page Style
+// *========*========*========*========*========*
+
+// Base Style
+$about-style: (
+  display: grid,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: max-content 64px,
+  justifyContent: center,
+  marginLeft: auto,
+  marginRight: auto,
+  rowGap: 64px,
+  width: 320px,
+);
+$about__inner-style: (
+  backgroundColor: #648064,
+  display: grid,
+  gridColumnEnd: 11,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: 64px repeat(2, max-content),
+  paddingBottom: 64px,
+  paddingTop: 64px,
+  rowGap: 32px,
+);
+$about__inner__h2-style: (
+  gridColumnEnd: 11,
+  gridColumnStart: 1,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+$about__inner__p-style: (
+  gridColumnEnd: 10,
+  gridColumnStart: 2,
+);
+$about__inner__table-style: (
+  display: grid,
+  gridColumnEnd: 10,
+  gridColumnStart: 2,
+  gridTemplateColumns: repeat(8, 32px),
+  gridTemplateRows: 64px repeat(2, max-content),
+);
+$about__inner__table__caption-style: (
+  gridColumnEnd: 9,
+  gridColumnStart: 1,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+$about__inner__table__thead-style: (
+  display: grid,
+  gridColumnEnd: 9,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(8, 32px),
+  gridTemplateRows: max-content,
+);
+$about__inner__table__thead__tr-style: (
+  display: grid,
+  gridColumnEnd: 9,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(8, 32px),
+  gridTemplateRows: max-content,
+);
+$about__inner__table__thead__tr__th-style: (
+  1: (
+    gridColumnEnd: 9,
+    gridColumnStart: 1,
+  ),
+  2: (
+    gridColumnEnd: 9,
+    gridColumnStart: 1,
+  ),
+);
+$about__inner__table__tbody-style: (
+  display: grid,
+  gridColumnEnd: 9,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: max-content,
+);
+$about__inner__table__tbody__tr-style: (
+  display: grid,
+  gridColumnEnd: 9,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: max-content,
+);
+$about__inner__table__tbody__tr__th-style: (
+  gridColumnEnd: 9,
+  gridColumnStart: 1,
+);
+$about__inner__table__tbody__tr__td-style: (
+  gridColumnEnd: 9,
+  gridColumnStart: 1,
+);
+$about__aside-style: (
+  display: grid,
+  gridColumnEnd: 14,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: 64px,
+);
+$about__aside__p-style: (
+  gridColumnEnd: 9,
+  gridColumnStart: 3,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-about-style: (
+  gridTemplateColumns: repeat(36, 32px),
+  gridTemplateRows: max-content 64px,
+  width: 1152px,
+);
+$pc-about__inner-style: (
+  gridColumnEnd: 37,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(36, 32px),
+  gridTemplateRows: 64px repeat(2, max-content),
+  paddingBottom: 128px,
+);
+$pc-about__inner__h2-style: (
+  gridColumnEnd: 12,
+  gridColumnStart: 2,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+$pc-about__inner__p-style: (
+  gridColumnEnd: 35,
+  gridColumnStart: 3,
+);
+$pc-about__inner__table-style: (
+  gridColumnEnd: 37,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(36, 32px),
+  gridTemplateRows: 64px repeat(2, max-content),
+);
+$pc-about__inner__table__caption-style: (
+  gridColumnEnd: 36,
+  gridColumnStart: 2,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+$pc-about__inner__table__thead-style: (
+  gridColumnEnd: 36,
+  gridColumnStart: 2,
+  gridTemplateColumns: repeat(34, 32px),
+  gridTemplateRows: max-content,
+);
+$pc-about__inner__table__thead__tr-style: (
+  gridColumnEnd: 35,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(34, 32px),
+  gridTemplateRows: max-content,
+);
+$pc-about__inner__table__thead__tr__th-style: (
+  1: (
+    gridColumnEnd: 18,
+    gridColumnStart: 1,
+  ),
+  2: (
+    gridColumnEnd: 35,
+    gridColumnStart: 18,
+  ),
+);
+$pc-about__inner__table__tbody-style: (
+  gridColumnEnd: 36,
+  gridColumnStart: 2,
+  gridTemplateColumns: repeat(34, 32px),
+  gridTemplateRows: max-content,
+);
+$pc-about__inner__table__tbody__tr-style: (
+  gridColumnEnd: 35,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(34, 32px),
+  gridTemplateRows: max-content,
+);
+$pc-about__inner__table__tbody__tr__th-style: (
+  gridColumnEnd: 18,
+  gridColumnStart: 1,
+);
+$pc-about__inner__table__tbody__tr__td-style: (
+  gridColumnEnd: 35,
+  gridColumnStart: 18,
+);
+$pc-about__aside-style: (
+  gridColumnEnd: 25,
+  gridColumnStart: 13,
+  gridRowEnd: 3,
+  gridRowStart: 2,
+  gridTemplateColumns: repeat(12, 32px),
+  gridTemplateRows: 64px,
+);
+$pc-about__aside__p-style: (
+  gridColumnEnd: 10,
+  gridColumnStart: 4,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.about {
+  display: hasKey($about-style, "display");
+  grid-template-columns: hasKey($about-style, "gridTemplateColumns");
+  grid-template-rows: hasKey($about-style, "gridTemplateRows");
+  justify-content: hasKey($about-style, "justifyContent");
+  margin-left: hasKey($about-style, "marginLeft");
+  margin-right: hasKey($about-style, "marginRight");
+  row-gap: hasKey($about-style, "rowGap");
+  width: hasKey($about-style, "width");
+
+  &__inner {
+    background-color: hasKey($about__inner-style, "backgroundColor");
+    display: hasKey($about__inner-style, "display");
+    grid-column-end: hasKey($about__inner-style, "gridColumnEnd");
+    grid-column-start: hasKey($about__inner-style, "gridColumnStart");
+    grid-template-columns: hasKey($about__inner-style, "gridTemplateColumns");
+    grid-template-rows: hasKey($about__inner-style, "gridTemplateRows");
+    padding-bottom: hasKey($about__inner-style, "paddingBottom");
+    padding-top: hasKey($about__inner-style, "paddingTop");
+    row-gap: hasKey($about__inner-style, "rowGap");
+
+    & > h2 {
+      grid-column-end: hasKey($about__inner__h2-style, "gridColumnEnd");
+      grid-column-start: hasKey($about__inner__h2-style, "gridColumnStart");
+      grid-row-end: hasKey($about__inner__h2-style, "gridRowEnd");
+      grid-row-start: hasKey($about__inner__h2-style, "gridRowStart");
+    }
+
+    & > p {
+      grid-column-end: hasKey($about__inner__p-style, "gridColumnEnd");
+      grid-column-start: hasKey($about__inner__p-style, "gridColumnStart");
+    }
+
+    & > table {
+      display: hasKey($about__inner__table-style, "display");
+      grid-column-end: hasKey($about__inner__table-style, "gridColumnEnd");
+      grid-column-start: hasKey($about__inner__table-style, "gridColumnStart");
+      grid-template-columns: hasKey($about__inner__table-style, "gridTemplateColumns");
+      grid-template-rows: hasKey($about__inner__table-style, "gridTemplateRows");
+
+      & > caption {
+        grid-column-end: hasKey($about__inner__table__caption-style, "gridColumnEnd");
+        grid-column-start: hasKey($about__inner__table__caption-style, "gridColumnStart");
+        grid-row-end: hasKey($about__inner__table__caption-style, "gridRowEnd");
+        grid-row-start: hasKey($about__inner__table__caption-style, "gridRowStart");
+      }
+
+      & > thead {
+        display: hasKey($about__inner__table__thead-style, "display");
+        grid-column-end: hasKey($about__inner__table__thead-style, "gridColumnEnd");
+        grid-column-start: hasKey($about__inner__table__thead-style, "gridColumnStart");
+        grid-template-columns: hasKey($about__inner__table__thead-style, "gridTemplateColumns");
+        grid-template-rows: hasKey($about__inner__table__thead-style, "gridTemplateRows");
+
+        & > tr {
+          display: hasKey($about__inner__table__thead__tr-style, "display");
+          grid-column-end: hasKey($about__inner__table__thead__tr-style, "gridColumnEnd");
+          grid-column-start: hasKey($about__inner__table__thead__tr-style, "gridColumnStart");
+          grid-template-columns: hasKey($about__inner__table__thead__tr-style, "gridTemplateColumns");
+          grid-template-rows: hasKey($about__inner__table__thead__tr-style, "gridTemplateRows");
+
+          @each $no, $property in $about__inner__table__thead__tr__th-style {
+            & > th:nth-of-type(#{$no}) {
+              grid-column-end: hasKey($property, "gridColumnEnd");
+              grid-column-start: hasKey($property, "gridColumnStart");
+            }
+          }
+        }
+      }
+
+      & > tbody {
+        display: hasKey($about__inner__table__tbody-style, "display");
+        grid-column-end: hasKey($about__inner__table__tbody-style, "gridColumnEnd");
+        grid-column-start: hasKey($about__inner__table__tbody-style, "gridColumnStart");
+        grid-template-columns: hasKey($about__inner__table__tbody-style, "gridTemplateColumns");
+        grid-template-rows: hasKey($about__inner__table__tbody-style, "gridTemplateRows");
+
+        & > tr {
+          display: hasKey($about__inner__table__tbody__tr-style, "display");
+          grid-column-end: hasKey($about__inner__table__tbody__tr-style, "gridColumnEnd");
+          grid-column-start: hasKey($about__inner__table__tbody__tr-style, "gridColumnStart");
+          grid-template-columns: hasKey($about__inner__table__tbody__tr-style, "gridTemplateColumns");
+          grid-template-rows: hasKey($about__inner__table__tbody__tr-style, "gridTemplateRows");
+
+          & > th {
+            grid-column-end: hasKey($about__inner__table__tbody__tr__th-style, "gridColumnEnd");
+            grid-column-start: hasKey($about__inner__table__tbody__tr__th-style, "gridColumnStart");
+          }
+
+          & > td {
+            grid-column-end: hasKey($about__inner__table__tbody__tr__td-style, "gridColumnEnd");
+            grid-column-start: hasKey($about__inner__table__tbody__tr__td-style, "gridColumnStart");
+          }
+        }
+      }
+    }
+  }
+
+  & > aside {
+    display: hasKey($about__aside-style, "display");
+    grid-column-end: hasKey($about__aside-style, "gridColumnEnd");
+    grid-column-start: hasKey($about__aside-style, "gridColumnStart");
+    grid-template-columns: hasKey($about__aside-style, "gridTemplateColumns");
+    grid-template-rows: hasKey($about__aside-style, "gridTemplateRows");
+
+    & > p {
+      grid-column-end: hasKey($about__aside__p-style, "gridColumnEnd");
+      grid-column-start: hasKey($about__aside__p-style, "gridColumnStart");
+      grid-row-end: hasKey($about__aside__p-style, "gridRowEnd");
+      grid-row-start: hasKey($about__aside__p-style, "gridRowStart");
+    }
+  }
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .about {
+    grid-template-columns: hasKey($pc-about-style, "gridTemplateColumns");
+    grid-template-rows: hasKey($pc-about-style, "gridTemplateRows");
+    width: hasKey($pc-about-style, "width");
+
+    &__inner {
+      grid-column-end: hasKey($pc-about__inner-style, "gridColumnEnd");
+      grid-column-start: hasKey($pc-about__inner-style, "gridColumnStart");
+      grid-template-columns: hasKey($pc-about__inner-style, "gridTemplateColumns");
+      grid-template-rows: hasKey($pc-about__inner-style, "gridTemplateRows");
+      padding-bottom: hasKey($pc-about__inner-style, "paddingBottom");
+
+      & > h2 {
+        grid-column-end: hasKey($pc-about__inner__h2-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-about__inner__h2-style, "gridColumnStart");
+        grid-row-end: hasKey($pc-about__inner__h2-style, "gridRowEnd");
+        grid-row-start: hasKey($pc-about__inner__h2-style, "gridRowStart");
+      }
+
+      & > p {
+        grid-column-end: hasKey($pc-about__inner__p-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-about__inner__p-style, "gridColumnStart");
+      }
+
+      & > table {
+        margin-top: 96px;
+        grid-column-end: hasKey($pc-about__inner__table-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-about__inner__table-style, "gridColumnStart");
+        grid-template-columns: hasKey($pc-about__inner__table-style, "gridTemplateColumns");
+        grid-template-rows: hasKey($pc-about__inner__table-style, "gridTemplateRows");
+
+        & > caption {
+          grid-column-end: hasKey($pc-about__inner__table__caption-style, "gridColumnEnd");
+          grid-column-start: hasKey($pc-about__inner__table__caption-style, "gridColumnStart");
+          grid-row-end: hasKey($pc-about__inner__table__caption-style, "gridRowEnd");
+          grid-row-start: hasKey($pc-about__inner__table__caption-style, "gridRowStart");
+        }
+
+        & > thead {
+          grid-column-end: hasKey($pc-about__inner__table__thead-style, "gridColumnEnd");
+          grid-column-start: hasKey($pc-about__inner__table__thead-style, "gridColumnStart");
+          grid-template-columns: hasKey($pc-about__inner__table__thead-style, "gridTemplateColumns");
+          grid-template-rows: hasKey($pc-about__inner__table__thead-style, "gridTemplateRows");
+
+          & > tr {
+            grid-column-end: hasKey($pc-about__inner__table__thead__tr-style, "gridColumnEnd");
+            grid-column-start: hasKey($pc-about__inner__table__thead__tr-style, "gridColumnStart");
+            grid-template-columns: hasKey($pc-about__inner__table__thead__tr-style, "gridTemplateColumns");
+            grid-template-rows: hasKey($pc-about__inner__table__thead__tr-style, "gridTemplateRows");
+
+            @each $no, $property in $pc-about__inner__table__thead__tr__th-style {
+              & > th:nth-of-type(#{$no}) {
+                grid-column-end: hasKey($property, "gridColumnEnd");
+                grid-column-start: hasKey($property, "gridColumnStart");
+              }
+            }
+          }
+        }
+
+        & > tbody {
+          grid-column-end: hasKey($pc-about__inner__table__tbody-style, "gridColumnEnd");
+          grid-column-start: hasKey($pc-about__inner__table__tbody-style, "gridColumnStart");
+          grid-template-columns: hasKey($pc-about__inner__table__tbody-style, "gridTemplateColumns");
+          grid-template-rows: hasKey($pc-about__inner__table__tbody-style, "gridTemplateRows");
+
+          & > tr {
+            grid-column-end: hasKey($pc-about__inner__table__tbody__tr-style, "gridColumnEnd");
+            grid-column-start: hasKey($pc-about__inner__table__tbody__tr-style, "gridColumnStart");
+            grid-template-columns: hasKey($pc-about__inner__table__tbody__tr-style, "gridTemplateColumns");
+            grid-template-rows: hasKey($pc-about__inner__table__tbody__tr-style, "gridTemplateRows");
+
+            & > th {
+              grid-column-end: hasKey($pc-about__inner__table__tbody__tr__th-style, "gridColumnEnd");
+              grid-column-start: hasKey($pc-about__inner__table__tbody__tr__th-style, "gridColumnStart");
+            }
+
+            & > td {
+              grid-column-end: hasKey($pc-about__inner__table__tbody__tr__td-style, "gridColumnEnd");
+              grid-column-start: hasKey($pc-about__inner__table__tbody__tr__td-style, "gridColumnStart");
+            }
+          }
+        }
+      }
+    }
+
+    & > aside {
+      grid-column-end: hasKey($pc-about__aside-style, "gridColumnEnd");
+      grid-column-start: hasKey($pc-about__aside-style, "gridColumnStart");
+      grid-row-end: hasKey($pc-about__aside-style, "gridRowEnd");
+      grid-row-start: hasKey($pc-about__aside-style, "gridRowStart");
+      grid-template-columns: hasKey($pc-about__aside-style, "gridTemplateColumns");
+      grid-template-rows: hasKey($pc-about__aside-style, "gridTemplateRows");
+
+      & > p {
+        grid-column-end: hasKey($pc-about__aside__p-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-about__aside__p-style, "gridColumnStart");
+        grid-row-end: hasKey($pc-about__aside__p-style, "gridRowEnd");
+        grid-row-start: hasKey($pc-about__aside__p-style, "gridRowStart");
+      }
+    }
+  }
+}

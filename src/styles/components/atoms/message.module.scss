@@ -1,0 +1,45 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$message-style: (
+  fontSize: 4rem,
+  lineHeight: 2,
+  textAlign: center,
+  whiteSpace: pre-line,  
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-message-style: (
+  fontSize: 8rem,
+  whiteSpace: normal,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.message {
+  font-size: hasKey($message-style, "fontSize");
+  line-height: hasKey($message-style, "lineHeight");
+  text-align: hasKey($message-style, "textAlign");
+  white-space: hasKey($message-style, "whiteSpace");
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .message {
+    font-size: hasKey($pc-message-style, "fontSize");
+    white-space: hasKey($pc-message-style, "whiteSpace");
+  }
+}

@@ -1,0 +1,318 @@
+// *========*========*========*========*========*
+// Page Style
+// *========*========*========*========*========*
+
+// Base Style
+$list-style: (
+  display: grid,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: max-content 64px,
+  justifyContent: center,
+  marginLeft: auto,
+  marginRight: auto,
+  rowGap: 64px,
+  width: 320px,
+);
+$list__inner-style: (
+  backgroundColor: #648064,
+  display: grid,
+  gridColumnEnd: 11,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: 64px repeat(2, max-content),
+  paddingBottom: 64px,
+  paddingTop: 64px,
+  rowGap: 32px,
+);
+$list__inner__h2-style: (
+  gridColumnEnd: 11,
+  gridColumnStart: 1,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+$list__inner__p-style: (
+  gridColumnEnd: 10,
+  gridColumnStart: 2,
+);
+$list__inner__article-style: (
+  display: grid,
+  gridColumnEnd: 11,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: repeat(3, 64px) max-content 64px,
+  rowGap: 32px,
+);
+$list__inner__article__h3-style: (
+  gridColumnEnd: 11,
+  gridColumnStart: 1,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+$list__inner__article__p-style: (
+  1: (
+    gridColumnEnd: 10,
+    gridColumnStart: 2,
+    gridRowEnd: 3,
+    gridRowStart: 2,
+  ),
+  2: (
+    gridColumnEnd: 10,
+    gridColumnStart: 2,
+    gridRowEnd: 4,
+    gridRowStart: 3,
+  ),
+  3: (
+    gridColumnEnd: 10,
+    gridColumnStart: 2,
+  ),
+  4: (
+    gridColumnEnd: 9,
+    gridColumnStart: 3,
+    gridRowEnd: 6,
+    gridRowStart: 5,
+  ),
+);
+$list__aside-style: (
+  display: grid,
+  gridColumnEnd: 14,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(10, 32px),
+  gridTemplateRows: 64px,
+);
+$list__aside__p-style: (
+  gridColumnEnd: 9,
+  gridColumnStart: 3,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-list-style: (
+  gridTemplateColumns: repeat(36, 32px),
+  gridTemplateRows: max-content 64px,
+  width: 1152px,
+);
+$pc-list__inner-style: (
+  gridColumnEnd: 37,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(36, 32px),
+  gridTemplateRows: 64px repeat(2, max-content),
+  paddingBottom: 128px,
+  rowGap: 128px,
+);
+$pc-list__inner__h2-style: (
+  gridColumnEnd: 12,
+  gridColumnStart: 2,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+$pc-list__inner__p-style: (
+  gridColumnEnd: 35,
+  gridColumnStart: 3,
+);
+$pc-list__inner__article-style: (
+  gridColumnEnd: 37,
+  gridColumnStart: 1,
+  gridTemplateColumns: repeat(36, 32px),
+  gridTemplateRows: repeat(3, 64px),
+);
+$pc-list__inner__article__h3-style: (
+  gridColumnEnd: 12,
+  gridColumnStart: 2,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+$pc-list__inner__article__p-style: (
+  1: (
+    gridColumnEnd: 24,
+    gridColumnStart: 14,
+    gridRowEnd: 2,
+    gridRowStart: 1,
+  ),
+  2: (
+    gridColumnEnd: 36,
+    gridColumnStart: 26,
+    gridRowEnd: 2,
+    gridRowStart: 1,
+  ),
+  3: (
+    gridColumnEnd: 35,
+    gridColumnStart: 3,
+    gridRowEnd: 3,
+    gridRowStart: 2,
+  ),
+  4: (
+    gridColumnEnd: 34,
+    gridColumnStart: 28,
+    gridRowEnd: 4,
+    gridRowStart: 3,
+  ),
+);
+$pc-list__aside-style: (
+  gridColumnEnd: 25,
+  gridColumnStart: 13,
+  gridRowEnd: 3,
+  gridRowStart: 2,
+  gridTemplateColumns: repeat(12, 32px),
+  gridTemplateRows: 64px,
+);
+$pc-list__aside__p-style: (
+  gridColumnEnd: 10,
+  gridColumnStart: 4,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.list {
+  display: hasKey($list-style, "display");
+  grid-template-columns: hasKey($list-style, "gridTemplateColumns");
+  grid-template-rows: hasKey($list-style, "gridTemplateRows");
+  justify-content: hasKey($list-style, "justifyContent");
+  margin-left: hasKey($list-style, "marginLeft");
+  margin-right: hasKey($list-style, "marginRight");
+  row-gap: hasKey($list-style, "rowGap");
+  width: hasKey($list-style, "width");
+
+  &__inner {
+    background-color: hasKey($list__inner-style, "backgroundColor");
+    display: hasKey($list__inner-style, "display");
+    grid-column-end: hasKey($list__inner-style, "gridColumnEnd");
+    grid-column-start: hasKey($list__inner-style, "gridColumnStart");
+    grid-template-columns: hasKey($list__inner-style, "gridTemplateColumns");
+    grid-template-rows: hasKey($list__inner-style, "gridTemplateRows");
+    padding-bottom: hasKey($list__inner-style, "paddingBottom");
+    padding-top: hasKey($list__inner-style, "paddingTop");
+    row-gap: hasKey($list__inner-style, "rowGap");
+
+    & > h2 {
+      grid-column-end: hasKey($list__inner__h2-style, "gridColumnEnd");
+      grid-column-start: hasKey($list__inner__h2-style, "gridColumnStart");
+      grid-row-end: hasKey($list__inner__h2-style, "gridRowEnd");
+      grid-row-start: hasKey($list__inner__h2-style, "gridRowStart");
+    }
+
+    & > p {
+      grid-column-end: hasKey($list__inner__p-style, "gridColumnEnd");
+      grid-column-start: hasKey($list__inner__p-style, "gridColumnStart");
+    }
+
+    & > article {
+      display: hasKey($list__inner__article-style, "display");
+      grid-column-end: hasKey($list__inner__article-style, "gridColumnEnd");
+      grid-column-start: hasKey($list__inner__article-style, "gridColumnStart");
+      grid-template-columns: hasKey($list__inner__article-style, "gridTemplateColumns");
+      grid-template-rows: hasKey($list__inner__article-style, "gridTemplateRows");
+      row-gap: hasKey($list__inner__article-style, "rowGap");
+
+      & > h3 {
+        grid-column-end: hasKey($list__inner__article__h3-style, "gridColumnEnd");
+        grid-column-start: hasKey($list__inner__article__h3-style, "gridColumnStart");
+        grid-row-end: hasKey($list__inner__article__h3-style, "gridRowEnd");
+        grid-row-start: hasKey($list__inner__article__h3-style, "gridRowStart");
+      }
+
+      @each $no, $property in $list__inner__article__p-style {
+        & > p:nth-of-type(#{$no}) {
+          grid-column-end: hasKey($property, "gridColumnEnd");
+          grid-column-start: hasKey($property, "gridColumnStart");
+        }
+      }
+    }
+  }
+
+  & > aside {
+    display: hasKey($list__aside-style, "display");
+    grid-column-end: hasKey($list__aside-style, "gridColumnEnd");
+    grid-column-start: hasKey($list__aside-style, "gridColumnStart");
+    grid-template-columns: hasKey($list__aside-style, "gridTemplateColumns");
+    grid-template-rows: hasKey($list__aside-style, "gridTemplateRows");
+
+    & > p {
+      grid-column-end: hasKey($list__aside__p-style, "gridColumnEnd");
+      grid-column-start: hasKey($list__aside__p-style, "gridColumnStart");
+      grid-row-end: hasKey($list__aside__p-style, "gridRowEnd");
+      grid-row-start: hasKey($list__aside__p-style, "gridRowStart");
+    }
+  }
+}
+
+@media screen and (min-width: 1152px) {
+  .list {
+    grid-template-columns: hasKey($pc-list-style, "gridTemplateColumns");
+    grid-template-rows: hasKey($pc-list-style, "gridTemplateRows");
+    width: hasKey($pc-list-style, "width");
+
+    &__inner {
+      grid-column-end: hasKey($pc-list__inner-style, "gridColumnEnd");
+      grid-column-start: hasKey($pc-list__inner-style, "gridColumnStart");
+      grid-template-columns: hasKey($pc-list__inner-style, "gridTemplateColumns");
+      grid-template-rows: hasKey($pc-list__inner-style, "gridTemplateRows");
+      padding-bottom: hasKey($pc-list__inner-style, "paddingBottom");
+
+      & > h2 {
+        grid-column-end: hasKey($pc-list__inner__h2-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-list__inner__h2-style, "gridColumnStart");
+        grid-row-end: hasKey($pc-list__inner__h2-style, "gridRowEnd");
+        grid-row-start: hasKey($pc-list__inner__h2-style, "gridRowStart");
+      }
+
+      & > p {
+        grid-column-end: hasKey($pc-list__inner__p-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-list__inner__p-style, "gridColumnStart");
+      }
+
+      & > article {
+        margin-top: 96px;
+        grid-column-end: hasKey($pc-list__inner__article-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-list__inner__article-style, "gridColumnStart");
+        grid-template-columns: hasKey($pc-list__inner__article-style, "gridTemplateColumns");
+        grid-template-rows: hasKey($pc-list__inner__article-style, "gridTemplateRows");
+
+        & > h3 {
+          grid-column-end: hasKey($pc-list__inner__article__h3-style, "gridColumnEnd");
+          grid-column-start: hasKey($pc-list__inner__article__h3-style, "gridColumnStart");
+          grid-row-end: hasKey($pc-list__inner__article__h3-style, "gridRowEnd");
+          grid-row-start: hasKey($pc-list__inner__article__h3-style, "gridRowStart");
+        }
+
+        @each $no, $property in $pc-list__inner__article__p-style {
+          & > p:nth-of-type(#{$no}) {
+            grid-column-end: hasKey($property, "gridColumnEnd");
+            grid-column-start: hasKey($property, "gridColumnStart");
+            grid-row-end: hasKey($property, "gridRowEnd");
+            grid-row-start: hasKey($property, "gridRowStart");
+          }
+        }
+      }
+    }
+
+    & > aside {
+      grid-column-end: hasKey($pc-list__aside-style, "gridColumnEnd");
+      grid-column-start: hasKey($pc-list__aside-style, "gridColumnStart");
+      grid-row-end: hasKey($pc-list__aside-style, "gridRowEnd");
+      grid-row-start: hasKey($pc-list__aside-style, "gridRowStart");
+      grid-template-columns: hasKey($pc-list__aside-style, "gridTemplateColumns");
+      grid-template-rows: hasKey($pc-list__aside-style, "gridTemplateRows");
+
+      & > p {
+        grid-column-end: hasKey($pc-list__aside__p-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-list__aside__p-style, "gridColumnStart");
+        grid-row-end: hasKey($pc-list__aside__p-style, "gridRowEnd");
+        grid-row-start: hasKey($pc-list__aside__p-style, "gridRowStart");
+      }
+    }
+  }
+}

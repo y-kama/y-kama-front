@@ -1,0 +1,103 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$jump-style: (
+  borderBottomWidth: 1px,
+  borderBottomStyle: solid,
+  borderBottomColor: #163216,
+  borderLeftWidth: 1px,
+  borderLeftStyle: solid,
+  borderLeftColor: #163216,
+  borderRightWidth: 1px,
+  borderRightStyle: solid,
+  borderRightColor: #163216,
+  borderTopWidth: 1px,
+  borderTopStyle: solid,
+  borderTopColor: #163216,
+  color: #163216,
+  fontSize: 4rem,
+  lineHeight: 2,
+  position: relative,
+  textAlign: center,
+  transition: 1s,
+  zIndex: 0,
+);
+$jump-hover-style: (
+  backgroundColor: #163216,
+  color: #F4F5F7,
+);
+$jump-style__a-style: (
+  display: block,
+);
+
+// Triangle Style
+$triangle-style: (
+  borderRightWidth: 16px,
+  borderRightStyle: solid,
+  borderRightColor: #163216,
+  borderTopWidth: 16px,
+  borderTopStyle: solid,
+  borderTopColor: transparent,
+  bottom: 4px,
+  content: "",
+  position: absolute,
+  right: 4px,
+  transition: 1s,
+  zIndex: -1,
+);
+$triangle-hover-style: (
+  borderRightWidth: 16px,
+  borderRightStyle: solid,
+  borderRightColor: #F4F5F7,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.jump {
+  border-bottom: hasKey($jump-style, "borderBottomWidth") hasKey($jump-style, "borderBottomStyle") hasKey($jump-style, "borderBottomColor");
+  border-left: hasKey($jump-style, "borderLeftWidth") hasKey($jump-style, "borderLeftStyle") hasKey($jump-style, "borderLeftColor");
+  border-right: hasKey($jump-style, "borderRightWidth") hasKey($jump-style, "borderRightStyle") hasKey($jump-style, "borderRightColor");
+  border-top: hasKey($jump-style, "borderTopWidth") hasKey($jump-style, "borderTopStyle") hasKey($jump-style, "borderTopColor");
+  color: hasKey($jump-style, "color");
+  font-size: hasKey($jump-style, "fontSize");
+  line-height: hasKey($jump-style, "lineHeight");
+  position: hasKey($jump-style, "position");
+  text-align: hasKey($jump-style, "textAlign");
+  transition: hasKey($jump-style, "transition");
+  z-index: hasKey($jump-style, "zIndex");
+
+  &:hover {
+    background-color: hasKey($jump-hover-style, "backgroundColor");
+    color: hasKey($jump-hover-style, "color");
+  }
+
+  & > a {
+    display: hasKey($jump-style__a-style, "display");
+  }
+
+  &::after {
+    border-right: hasKey($triangle-style, "borderRightWidth") hasKey($triangle-style, "borderRightStyle") hasKey($triangle-style, "borderRightColor");
+    border-top: hasKey($triangle-style, "borderTopWidth") hasKey($triangle-style, "borderTopStyle") hasKey($triangle-style, "borderTopColor");
+    bottom: hasKey($triangle-style, "bottom");
+    content: hasKey($triangle-style, "content");
+    position: hasKey($triangle-style, "position");
+    right: hasKey($triangle-style, "right");
+    transition: hasKey($triangle-style, "transition");
+    z-index: hasKey($triangle-style, "zIndex");
+  }
+
+  &:hover::after {
+    border-right: hasKey($triangle-hover-style, "borderRightWidth") hasKey($triangle-hover-style, "borderRightStyle") hasKey($triangle-hover-style, "borderRightColor");
+  }
+}

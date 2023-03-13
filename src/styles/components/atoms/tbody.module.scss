@@ -1,0 +1,93 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$tbody__tr__th-style: (
+  backgroundColor: #163216,
+  fontSize: 4rem,
+  fontWeight: normal,
+  lineHeight: 2,
+  textAlign: center,
+  whiteSpace: pre-line,
+  wordWrap: break-word,
+);
+$tbody__tr__td-style: (
+  backgroundColor: #327232,
+  fontSize: 4rem,
+  fontWeight: normal,
+  lineHeight: 2,
+  textAlign: center,
+  whiteSpace: pre-line,
+  wordWrap: break-word,
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-tbody__tr-style: (
+  odd: (
+    backgroundColor: #327232,
+  ),
+  even: (
+    backgroundColor: #163216,
+  ),
+);
+$pc-tbody__tr__th-style: (
+  backgroundColor: unset,
+  whiteSpace: normal,
+);
+$pc-tbody__tr__td-style: (
+  backgroundColor: unset,
+  whiteSpace: normal,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.tbody__tr__th {
+  background-color: hasKey($tbody__tr__th-style, "backgroundColor");
+  font-size: hasKey($tbody__tr__th-style, "fontSize");
+  font-weight: hasKey($tbody__tr__th-style, "fontWeight");
+  line-height: hasKey($tbody__tr__th-style, "lineHeight");
+  text-align: hasKey($tbody__tr__th-style, "textAlign");
+  white-space: hasKey($tbody__tr__th-style, "whiteSpace");
+  word-wrap: hasKey($tbody__tr__th-style, "wordWrap");
+}
+
+.tbody__tr__td {
+  background-color: hasKey($tbody__tr__td-style, "backgroundColor");
+  font-size: hasKey($tbody__tr__td-style, "fontSize");
+  font-weight: hasKey($tbody__tr__td-style, "fontWeight");
+  line-height: hasKey($tbody__tr__td-style, "lineHeight");
+  text-align: hasKey($tbody__tr__td-style, "textAlign");
+  white-space: hasKey($tbody__tr__td-style, "whiteSpace");
+  word-wrap: hasKey($tbody__tr__td-style, "wordWrap");
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  @each $no, $property in $pc-tbody__tr-style {
+    .tbody__tr:nth-child(#{$no}) {
+      background-color: hasKey($property, "backgroundColor");
+    }
+  }
+
+  .tbody__tr__th {
+    background-color: hasKey($pc-tbody__tr__th-style, "backgroundColor");
+    white-space: hasKey($pc-tbody__tr__th-style, "whiteSpace");
+  }
+
+  .tbody__tr__td {
+    background-color: hasKey($pc-tbody__tr__td-style, "backgroundColor");
+    white-space: hasKey($pc-tbody__tr__td-style, "whiteSpace");
+  }
+}

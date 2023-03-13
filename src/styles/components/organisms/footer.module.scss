@@ -1,0 +1,89 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$footer-style: (
+  backgroundColor: #163216,
+  minWidth: 320px,
+);
+$footer__inner-style: (
+  display: grid,
+  gridTemplateRows: 64px,
+  gridTemplateColumns: repeat(10, 32px),
+  marginLeft: auto,
+  marginRight: auto,
+  width: 320px,
+);
+$footer__inner__p-style: (
+  gridColumnEnd: 11,
+  gridColumnStart: 1,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-footer__inner-style: (
+  gridTemplateColumns: repeat(36, 32px),
+  gridTemplateRows: 64px,
+  width: 1152px,
+);
+$pc-footer__inner__p-style: (
+  gridColumnEnd: 37,
+  gridColumnStart: 1,
+  gridRowEnd: 2,
+  gridRowStart: 1,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.footer {
+  background-color: hasKey($footer-style, "backgroundColor");
+  min-width: hasKey($footer-style, "minWidth");
+
+  &__inner {
+    display: hasKey($footer__inner-style, "display");
+    grid-template-columns: hasKey($footer__inner-style, "gridTemplateColumns");
+    grid-template-rows: hasKey($footer__inner-style, "gridTemplateRows");
+    margin-left: hasKey($footer__inner-style, "marginLeft");
+    margin-right: hasKey($footer__inner-style, "marginRight");
+    width: hasKey($footer__inner-style, "width");
+
+    & > p {
+      display: grid;
+      grid-column-end: hasKey($footer__inner__p-style, "gridColumnEnd");
+      grid-column-start: hasKey($footer__inner__p-style, "gridColumnStart");
+      grid-row-end: hasKey($footer__inner__p-style, "gridRowEnd");
+      grid-row-start: hasKey($footer__inner__p-style, "gridRowStart");
+    }
+  }
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .footer {
+    &__inner {
+      grid-template-columns: hasKey($pc-footer__inner-style, "gridTemplateColumns");
+      grid-template-rows: hasKey($pc-footer__inner-style, "gridTemplateRows");
+      width: hasKey($pc-footer__inner-style, "width");
+
+      & > p {
+        grid-column-end: hasKey($pc-footer__inner__p-style, "gridColumnEnd");
+        grid-column-start: hasKey($pc-footer__inner__p-style, "gridColumnStart");
+        grid-row-end: hasKey($pc-footer__inner__p-style, "gridRowEnd");
+        grid-row-start: hasKey($pc-footer__inner__p-style, "gridRowStart");
+      }
+    }
+  }
+}

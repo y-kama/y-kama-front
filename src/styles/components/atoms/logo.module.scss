@@ -1,0 +1,97 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$logo-style: (
+  fontSize: 4rem,
+  lineHeight: 2,
+  position: relative,
+  textAlign: center,
+  zIndex: 0,  
+);
+
+// Mountain Style
+$mountain-style: (
+  borderBottomWidth: 40px,
+  borderBottomStyle: solid,
+  borderBottomColor: #328032,
+  borderLeftWidth: 25px,
+  borderLeftStyle: solid,
+  borderLeftColor: transparent,
+  borderRightWidth: 25px,
+  borderRightStyle: solid,
+  borderRightColor: transparent,
+  bottom: 10px,
+  content: "",
+  display: block,
+  left: 97px,
+  position: absolute,
+  right: 97px,
+  top: 8px,
+  zIndex: -1,
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-mountain-style: (
+  left: 65px,
+  right: 65px,
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+.logo {
+  font-size: hasKey($logo-style, "fontSize");
+  line-height: hasKey($logo-style, "lineHeight");
+  position: hasKey($logo-style, "position");
+  text-align: hasKey($logo-style, "textAlign");
+  z-index: hasKey($logo-style, "zIndex");
+
+  &::before {
+    border-bottom: hasKey($mountain-style, "borderBottomWidth") hasKey($mountain-style, "borderBottomStyle") hasKey($mountain-style, "borderBottomColor");
+    border-left: hasKey($mountain-style, "borderLeftWidth") hasKey($mountain-style, "borderLeftStyle") hasKey($mountain-style, "borderLeftColor");
+    border-right: hasKey($mountain-style, "borderRightWidth") hasKey($mountain-style, "borderRightStyle") hasKey($mountain-style, "borderRightColor");
+    content: hasKey($mountain-style, "content");
+    display: hasKey($mountain-style, "display");
+    left: hasKey($mountain-style, "left");
+    position: hasKey($mountain-style, "position");
+    top: hasKey($mountain-style, "top");
+    z-index: hasKey($mountain-style, "zIndex");
+  }
+
+  &::after {
+    border-bottom: hasKey($mountain-style, "borderBottomWidth") hasKey($mountain-style, "borderBottomStyle") hasKey($mountain-style, "borderBottomColor");
+    border-left: hasKey($mountain-style, "borderLeftWidth") hasKey($mountain-style, "borderLeftStyle") hasKey($mountain-style, "borderLeftColor");
+    border-right: hasKey($mountain-style, "borderRightWidth") hasKey($mountain-style, "borderRightStyle") hasKey($mountain-style, "borderRightColor");
+    bottom: hasKey($mountain-style, "bottom");
+    content: hasKey($mountain-style, "content");
+    display: hasKey($mountain-style, "display");
+    position: hasKey($mountain-style, "position");
+    right: hasKey($mountain-style, "right");
+    z-index: hasKey($mountain-style, "zIndex");
+  }
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .logo {
+    &::before {
+      left: hasKey($pc-mountain-style, "left");
+    }
+
+    &::after {
+      right: hasKey($pc-mountain-style, "right");
+    }
+  }
+}

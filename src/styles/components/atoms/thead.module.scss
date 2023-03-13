@@ -1,0 +1,78 @@
+// *========*========*========*========*========*
+// Component Style
+// html { font-size: 8px }
+// *========*========*========*========*========*
+
+// Base Style
+$thead__tr__th-style: (
+  odd: (
+    backgroundColor: #163216,
+    fontSize: 4rem,
+    fontWeight: normal,
+    lineHeight: 2,
+    textAlign: center,
+    whiteSpace: pre-line,
+    wordWrap: break-word,
+  ),
+  even: (
+    backgroundColor: #327232,
+    fontSize: 4rem,
+    fontWeight: normal,
+    lineHeight: 2,
+    textAlign: center,
+    whiteSpace: pre-line,
+    wordWrap: break-word,
+  ),
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-thead-tr: (
+  backgroundColor: #163216,
+);
+$pc-thead__tr__th-style: (
+  odd: (
+    backgroundColor: unset,
+    whiteSpace: normal,
+  ),
+  even: (
+    backgroundColor: unset,
+    whiteSpace: normal,
+  ),
+);
+
+// キー名の確認
+@function hasKey($mapName, $keyName) {
+  @if map-has-key($mapName, $keyName) {
+    @return map-get($mapName, $keyName);
+  }
+  @else {
+    @error "マップに" + $keyName + "が存在しない";
+  }
+};
+
+@each $no, $property in $thead__tr__th-style {
+  .thead__tr__th:nth-child(#{$no}) {
+    background-color: hasKey($property, "backgroundColor");
+    font-size: hasKey($property, "fontSize");
+    font-weight: hasKey($property, "fontWeight");
+    line-height: hasKey($property, "lineHeight");
+    text-align: hasKey($property, "textAlign");
+    word-wrap: hasKey($property, "wordWrap");
+  }
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .thead__tr {
+    background-color: hasKey($pc-thead-tr, "backgroundColor");
+  }
+
+  @each $no, $property in $pc-thead__tr__th-style {
+    .thead__tr__th:nth-child(#{$no}) {
+      background-color: hasKey($property, "backgroundColor");
+      white-space: hasKey($property, "whiteSpace");
+    }
+  }
+}
