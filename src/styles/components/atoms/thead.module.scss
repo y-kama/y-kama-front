@@ -6,7 +6,7 @@
 // Base Style
 $thead__tr__th-style: (
   odd: (
-    backgroundColor: #163216,
+    backgroundColor: #244024,
     fontSize: 4rem,
     fontWeight: normal,
     lineHeight: 2,
@@ -15,7 +15,7 @@ $thead__tr__th-style: (
     wordWrap: break-word,
   ),
   even: (
-    backgroundColor: #327232,
+    backgroundColor: #406440,
     fontSize: 4rem,
     fontWeight: normal,
     lineHeight: 2,
@@ -30,7 +30,7 @@ $pc-style: (
   minWidth: 1152px,
 );
 $pc-thead-tr: (
-  backgroundColor: #163216,
+  backgroundColor: #244024,
 );
 $pc-thead__tr__th-style: (
   odd: (

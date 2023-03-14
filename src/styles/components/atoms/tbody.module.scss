@@ -5,7 +5,7 @@
 
 // Base Style
 $tbody__tr__th-style: (
-  backgroundColor: #163216,
+  backgroundColor: #244024,
   fontSize: 4rem,
   fontWeight: normal,
   lineHeight: 2,
@@ -14,7 +14,7 @@ $tbody__tr__th-style: (
   wordWrap: break-word,
 );
 $tbody__tr__td-style: (
-  backgroundColor: #327232,
+  backgroundColor: #406440,
   fontSize: 4rem,
   fontWeight: normal,
   lineHeight: 2,
@@ -29,10 +29,10 @@ $pc-style: (
 );
 $pc-tbody__tr-style: (
   odd: (
-    backgroundColor: #327232,
+    backgroundColor: #406440,
   ),
   even: (
-    backgroundColor: #163216,
+    backgroundColor: #244024,
   ),
 );
 $pc-tbody__tr__th-style: (
