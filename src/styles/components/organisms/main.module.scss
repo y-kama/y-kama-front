@@ -5,9 +5,18 @@
 
 // Base Style
 $main-style: (
+  marginBottom: 32px,
+  marginTop: 32px,
+  minWidth: 320px,
+);
+
+// PC Style
+$pc-style: (
+  minWidth: 1152px,
+);
+$pc-main-style: (
   marginBottom: 96px,
   marginTop: 96px,
-  minWidth: 320px,
 );
 
 // キー名の確認
@@ -24,4 +33,11 @@ $main-style: (
   margin-bottom: hasKey($main-style, "marginBottom");
   margin-top: hasKey($main-style, "marginTop");
   min-width: hasKey($main-style, "minWidth");
+}
+
+@media screen and (min-width: hasKey($pc-style, "minWidth")) {
+  .main {
+    margin-bottom: hasKey($pc-main-style, "marginBottom");
+    margin-top: hasKey($pc-main-style, "marginTop");
+  }
 }
