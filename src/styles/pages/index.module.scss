@@ -19,8 +19,8 @@ $index__inner-style: (
   gridColumnStart: 1,
   gridTemplateColumns: repeat(10, 32px),
   gridTemplateRows: 64px repeat(2, max-content),
-  paddingBottom: 64px,
-  paddingTop: 64px,
+  paddingBottom: 32px,
+  paddingTop: 32px,
   rowGap: 32px,
 );
 $index__inner__h2-style: (

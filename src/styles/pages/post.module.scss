@@ -20,8 +20,8 @@ $post__inner-style: (
   gridColumnStart: 1,
   gridTemplateColumns: repeat(10, 32px),
   gridTemplateRows: repeat(3, 64px) max-content repeat(3, 64px),
-  paddingBottom: 64px,
-  paddingTop: 64px,
+  paddingBottom: 32px,
+  paddingTop: 32px,
   rowGap: 32px,
 );
 $post__inner__h2-style: (
